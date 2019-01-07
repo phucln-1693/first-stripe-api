@@ -1,5 +1,6 @@
 const keyPublishable = `pk_test_4hdlCMzDeRUfh7zkBIfXG9O2`;
 const keySecret = `sk_test_xdlm5mgI9XwUvUL8dxd8ACmF`;
+const path = require(`path`);
 
 const app = require("express")();
 const stripe = require("stripe")(keySecret);
@@ -8,10 +9,11 @@ app.set("view engine", "pug");
 app.use(require("body-parser").urlencoded({ extended: false }));
 
 app.get(`/`, (req, res) => {
-  res.render(`index.pug`, { keyPublishable });
+  // res.render(`index.pug`, { keyPublishable });
+  res.sendFile(path.join(__dirname, `./views`, `index.html`));
 });
 
-app.post("/charge", (req, res) => {
+app.post("/payment", (req, res) => {
   let amount = 500;
 
   stripe.customers.create({
@@ -27,6 +29,10 @@ app.post("/charge", (req, res) => {
       })
     })
     .then(charge =>
-      res.render("charge.pug"));
+      res.render("charge.pug"))
+    .catch(err => {
+      if (err) console.log(`loi buoc thanh toan: ${JSON.stringify(err)}`);
+      console.log(`catch process`);
+    })
 });
 app.listen(4567);
