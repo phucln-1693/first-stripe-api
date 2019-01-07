@@ -1,0 +1,26 @@
+{
+  "name": "first-stripe-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "pug": "^2.0.3",
+    "stripe": "^6.20.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phucln01/first-stripe-api.git"
+  },
+  "author": "PaPu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phucln01/first-stripe-api/issues"
+  },
+  "homepage": "https://github.com/phucln01/first-stripe-api#readme"
+}
