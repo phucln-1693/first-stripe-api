@@ -14,7 +14,7 @@ app.get(`/`, (req, res) => {
 });
 
 app.post("/payment", (req, res) => {
-  let amount = 500;
+  let amount = 2000;
 
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -25,10 +25,11 @@ app.post("/payment", (req, res) => {
         amount,
         description: "Sample Charge",
         currency: "usd",
-        customer: customer.id
+        customer: customer.id,
+        receipt_email: "luong.ngoc.phuc@framgia.com"
       })
     })
-    .then(charge =>
+    .then(() =>
       res.render("charge.pug"))
     .catch(err => {
       if (err) console.log(`loi buoc thanh toan: ${JSON.stringify(err)}`);
